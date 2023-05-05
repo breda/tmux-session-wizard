@@ -17,7 +17,7 @@ else
   # No argument is given. Use FZF
   RESULT=$((tmux list-sessions -F "#{session_name}: #{session_windows} window(s)\
 #{?session_grouped, (group ,}#{session_group}#{?session_grouped,),}\
-#{?session_attached, (attached),}") | grep -v -E "^[0-9]" | $(__fzfcmd) --reverse)
+#{?session_attached, (attached),}") | grep -v -E "^[0-9]" | sort | $(__fzfcmd) --reverse)
   if [ -z "$RESULT" ]; then
     exit 0
   fi
